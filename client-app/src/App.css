@@ -1,153 +1,46 @@
-/* General App Styling */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f4f7f9;
-  color: #333;
-  margin: 0;
-  padding: 2rem;
+/* Custom styles that complement Tailwind CSS */
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease-in-out;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
 
-header h1 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
 }
 
-.card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  margin-bottom: 2rem;
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
-/* Auth Section */
-.auth-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+/* Loading animation for better UX */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
 }
 
-.auth-btn {
-  background-color: #4285F4;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.auth-btn:hover { background-color: #357ae8; }
-
-.login-prompt {
-  text-align: center;
-}
-.login-prompt h2 { margin-top: 0; }
-
-/* Upload Section */
-.upload-section h2, .dashboard h2, .history-section h2 {
-  margin-top: 0;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
+.loading-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background: linear-gradient(to right, #f1f5f9 8%, #e2e8f0 18%, #f1f5f9 33%);
+  background-size: 800px 104px;
 }
 
-.upload-section {
-  text-align: center;
-}
-
-input[type="file"] {
-  display: block;
-  margin: 1.5rem auto;
-}
-
-button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-button:hover { background-color: #2980b9; }
-button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
-
-.error-message {
-  color: #e74c3c;
-  text-align: center;
-  margin-top: -1rem;
-  margin-bottom: 1rem;
-}
-
-/* Dashboard & Results */
-.dashboard { animation: fadeIn 0.5s ease-in-out; }
-
-.summary-card {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.ai-summary {
-  background-color: #e9f5ff;
-  border-left: 4px solid #3498db;
-  text-align: left;
-  font-style: italic;
-  color: #2c3e50;
-}
-
-.summary-card h3 { margin-top: 0; }
-.summary-card .score { font-size: 2.5rem; font-weight: bold; display: block; margin: 0.5rem 0; }
-
-/* Score Colors */
-.green { color: #2ecc71; }
-.orange { color: #f39c12; }
-.red { color: #e74c3c; }
-
-/* Results Table */
-.results-table { width: 100%; border-collapse: collapse; }
-.results-table th, .results-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #ddd; }
-.results-table th { background-color: #f2f2f2; }
-.results-table th:nth-child(1) { width: 40%; }
-.results-table th:nth-child(2) { width: 15%; text-align: center; }
-.results-table th:nth-child(3) { width: 45%; }
-
-.score-badge { padding: 0.25rem 0.5rem; border-radius: 12px; color: white; font-weight: bold; font-size: 0.9em; }
-.score-badge.green { background-color: #2ecc71; }
-.score-badge.orange { background-color: #f39c12; }
-.score-badge.red { background-color: #e74c3c; }
-
-/* History Section */
-.history-list { list-style: none; padding: 0; }
-.history-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  margin-bottom: 0.5rem;
-}
-.history-file { font-weight: bold; }
-.history-score { font-weight: bold; }
-.history-date { color: #7f8c8d; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* File upload drag and drop enhancement */
+.file-upload-area.drag-over {
+  @apply border-primary-400 bg-primary-50;
 }
