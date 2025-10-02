@@ -11,6 +11,13 @@ A web application that helps organizations analyze procurement data for environm
 - **History Tracking**: View previous analysis results
 - **Real-time Analysis**: Get instant feedback on procurement decisions
 
+## Demo Video
+
+
+https://github.com/user-attachments/assets/4c987dc1-a922-47c3-96d7-ceadd2b048fa
+
+
+
 ## Tech Stack
 
 ### Frontend
