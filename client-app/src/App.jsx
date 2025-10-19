@@ -449,8 +449,8 @@ function App() {
               >
                 <motion.span 
                   className="bg-gradient-to-b from-green-950 to-green-300 bg-clip-text text-transparent inline-block"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
                   Transform Your
@@ -458,11 +458,11 @@ function App() {
                 <br />
                 <motion.span 
                   className="bg-gradient-to-b from-green-700 to-green-200 bg-clip-text text-transparent inline-block"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  Procurement with
+                  Business with
                 </motion.span>
                 <br />
                 <motion.span 
