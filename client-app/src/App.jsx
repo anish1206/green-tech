@@ -4,6 +4,8 @@ import { auth, provider } from './firebase';
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { motion } from 'framer-motion';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+
 function App() {
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -66,7 +68,7 @@ function App() {
     if (!currentUser) return;
     try {
       const token = await currentUser.getIdToken();
-      const response = await axios.get('http://localhost:3001/api/history', {
+  const response = await axios.get(`${API_BASE_URL}/api/history`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setHistory(response.data);
@@ -88,7 +90,7 @@ function App() {
 
     try {
       const token = await user.getIdToken();
-      const response = await axios.post('http://localhost:3001/api/upload', formData, {
+  const response = await axios.post(`${API_BASE_URL}/api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
