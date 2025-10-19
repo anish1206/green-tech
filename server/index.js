@@ -216,16 +216,29 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // 2. INITIALIZE SERVICES (Now with Google Gemini)
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // --- NEW: Initialize Google Gemini ---
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const geminiModel = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
 // Initialize Firebase Admin SDK
-const serviceAccount = require('./serviceAccountKey.json');
+let serviceAccount = null;
+if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
+    try {
+        serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
+    } catch (parseError) {
+        console.error('Failed to parse FIREBASE_SERVICE_ACCOUNT_JSON:', parseError);
+    }
+}
+
+if (!serviceAccount) {
+    // Fallback to local file for development when env var not provided
+    serviceAccount = require('./serviceAccountKey.json');
+}
+
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)
 });
 const db = admin.firestore();
 
